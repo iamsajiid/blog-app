@@ -58,7 +58,7 @@ class StorageService {
         }
     }
 
-    getDocument = async (slug) => {
+    getOneDocument = async (slug) => {
         try {
             return this.databases.getDocument(config.appwriteDatabaseID, config.appwriteCollectionID, slug)
         } catch (error) {
@@ -67,7 +67,7 @@ class StorageService {
         }
     }
 
-    getDocumentUsingQueries = async (queries = Query.equal("status", "active")) => {
+    getAllDocuments = async (queries = Query.equal("status", "active")) => {
         try {
             this.databases.listDocuments(
                 config.appwriteDatabaseID,
@@ -116,3 +116,7 @@ class StorageService {
         }
     }
 }
+
+const storageService = new StorageService()
+
+export default storageService
