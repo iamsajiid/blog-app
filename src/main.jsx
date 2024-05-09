@@ -5,14 +5,8 @@ import "./index.css";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home.jsx";
+import { Home, LoginPage, SignUpPage, AllPostsPage, AddPostPage, EditPostPage, Post } from "./pages";
 import Protected from "./components/AuthLayout.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import SignUpPage from "./pages/SignUpPage.jsx";
-import AllPostsPage from "./pages/AllPostsPage.jsx"
-import AddPostPage from "./pages/AddPostPage.jsx"
-import EditPostPage from "./pages/EditPostPage.jsx"
-import Post from "./pages/Post.jsx"
 
 const router = createBrowserRouter([
   {
@@ -77,7 +71,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

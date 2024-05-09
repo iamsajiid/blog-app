@@ -5,6 +5,8 @@ import authService from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import { login as storeLogin } from "../store/slices/authSlice";
 import Input from "./Input";
+import Logo from "./Logo";
+import { Link } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ function Login() {
   const login = async (data) => {
     setError("");
     try {
-      const session = await authService.login(data);
+      const session = await authService.login(data.email, data.password);
       if (session) {
         const userData = await authService.getCurrentUser();
         if (userData) {
@@ -29,17 +31,7 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full">
-      <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
-      >
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
-            <Logo width="100%" />
-          </span>
-        </div>
-      </div>
-
+    <div className="items-center justify-center w-full">
       <h2 className="text-center text-2xl font-bold leading-tight">
         Sign in to your account
       </h2>
@@ -54,11 +46,15 @@ function Login() {
         </Link>
       </p>
       {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-      <form onSubmit={handleSubmit(login)}>
-        <div>
+      <form
+        className="flex flex-col justify-center items-center p-6 rounded-lg bg-white max-w-max m-auto mt-5"
+        onSubmit={handleSubmit(login)}
+      >
+        <div className="flex flex-col justify-center items-center gap-4">
           <Input
             label={"Email: "}
             placeholder={"Enter email"}
+            name={"email"}
             type={"email"}
             {...register("email", {
               required: true,
@@ -73,13 +69,17 @@ function Login() {
           <Input
             label={"Password: "}
             placeholder={"enter password"}
+            name={"password"}
             type={"password"}
             {...register("password", {
               required: true,
             })}
           ></Input>
 
-          <button className="w-full" type="submit">
+          <button
+            type="submit"
+            className="bg-white border-red-500 border-solid border focus:outline-blue-500 max-w-max p-3 rounded-lg"
+          >
             login
           </button>
         </div>

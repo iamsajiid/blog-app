@@ -12,7 +12,7 @@ class StorageService {
         this.bucket = new Storage(this.client)
     }
 
-    createDocument = async ({title, slug, content, featuredImage, status, userID}) => {
+    createDocument = async ({title, slug, content, featured_img, status, userID}) => {
         try {
             return await this.databases.createDocument(
                 config.appwriteDatabaseID,
@@ -22,7 +22,7 @@ class StorageService {
                     userID,
                     title,
                     content,
-                    featuredImage,
+                    featured_img,
                     status
                 }
             )
@@ -31,7 +31,7 @@ class StorageService {
         }
     }
 
-    updateDocument = async (slug, {title, content, featuredImage, status}) => {
+    updateDocument = async (slug, {title, content, featured_img, status}) => {
         try {
             return await this.databases.updateDocument(
                 config.appwriteDatabaseID,
@@ -40,7 +40,7 @@ class StorageService {
                 {
                     title,
                     content,
-                    featuredImage,
+                    featured_img,
                     status
                 }
             )

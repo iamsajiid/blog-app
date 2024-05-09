@@ -5,9 +5,11 @@ import authService from "../services/auth";
 import { login as storeLogin } from "../store/slices/authSlice";
 import { useForm } from "react-hook-form";
 import Input from "./Input";
+import Logo from "./Logo";
+import { Link } from "react-router-dom";
 
 function Signup() {
-  const [handleSubmit, register] = useForm();
+  const { handleSubmit, register } = useForm();
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,6 +22,7 @@ function Signup() {
         const userData = await authService.getCurrentUser();
         if (userData) {
           dispatch(storeLogin(userData));
+          console.log(userData)
           navigate("/");
         }
       }
@@ -29,8 +32,8 @@ function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div
+    <div className=" items-center justify-center">
+      {/* <div
         className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
       >
         <div className="mb-2 flex justify-center">
@@ -38,7 +41,7 @@ function Signup() {
             <Logo width="100%" />
           </span>
         </div>
-      </div>
+      </div> */}
       <h2 className="text-center text-2xl font-bold leading-tight">
         Sign up to create account
       </h2>
@@ -52,7 +55,8 @@ function Signup() {
         </Link>
       </p>
       {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-      <form onSubmit={handleSubmit(create)}>
+
+      <form className="flex flex-col justify-center items-center space-y-4 p-6 rounded-lg bg-white max-w-max m-auto mt-5" onSubmit={handleSubmit(create)}>
         <Input
           label={"Name: "}
           placeholder={"Enter name: "}
@@ -82,7 +86,7 @@ function Signup() {
             required: true,
           })}
         ></Input>
-        <button type="submit" className="w-full">
+        <button type="submit" className="bg-white border-red-500 border-solid border focus:outline-blue-500 max-w-max p-3 rounded-lg">
           Create Account
         </button>
       </form>

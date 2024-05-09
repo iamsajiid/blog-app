@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import storageService from '../services/storage'
-import { PostCard } from '../components'
+import { Container, PostCard } from '../components'
 
 function AllPostsPage() {
     const [posts, setPosts] = useState([])
@@ -12,7 +12,7 @@ function AllPostsPage() {
     }, [])
     
   return (
-    <div className='w-full py-8'>
+    posts? (<div className='w-full py-8'>
         <Container>
             <div className='flex flex-wrap'>
                 {posts.map((post)=>{
@@ -22,7 +22,8 @@ function AllPostsPage() {
                 })}
             </div>
         </Container>
-    </div>
+    </div>) 
+    : <div>no posts</div>
   )
 }
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import authSlice from "../store/slices/authSlice";
-import { useSelector } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 import storageService from "../services/storage";
 import { useNavigate, useParams } from "react-router-dom";
-
+import parse from "html-react-parser"
+ 
 function Post() {
   const [post, setPost] = useState();
   const userData = useSelector((state) => state.auth.userData);
@@ -25,7 +25,7 @@ function Post() {
   const deletePost = () => {
     storageService.deleteDocument(post.$id).then((status) => {
       if (status) {
-        storageService.deleteDocument(post.featuredImage);
+        storageService.deleteDocument(post.featured_img);
         navigate("/");
       }
     });
@@ -36,7 +36,7 @@ function Post() {
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <img
-            src={storageService.getFilePreview(post.featuredImage)}
+            src={storageService.getFilePreview(post.featured_img)}
             alt={post.title}
             className="rounded-xl"
           />
