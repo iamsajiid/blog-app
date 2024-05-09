@@ -1,9 +1,25 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # blog-app
+
+## Description:
+This is a full-stack blogging application built with React.js for the frontend and Appwrite as a Backend-as-a-Service (BaaS) solution. This project exemplifies optimal coding practices, equivalent to production-grade applications, ensuring reliability and scalability.
+
+## Key Features:
+
+- **User Authentication:** Secure user authentication using React Router's AuthLayout component ensures that only logged-in users can access the blogging functionalities.
+- **CRUD Operations:** Create, read, update, and delete blog posts effortlessly within the application.
+- **Dynamic Routing:** Utilizing React Router DOM, seamless navigation between different sections of the application is ensured.
+- **Custom Slug Creation:** Leveraging React Hook Form's watch feature, custom slugs are generated dynamically by converting spaces between words into hyphens, enhancing SEO and user experience.
+
+## Technologies Used:
+
+### Frontend:
+- React.js
+- React Router DOM
+- React Redux
+- Redux Toolkit
+- React Hook Form
+- TinyMCE React
+- Tailwind CSS
+
+### Backend:
+- Appwrite (Backend-as-a-Service)
