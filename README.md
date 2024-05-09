@@ -9,6 +9,7 @@ This is a full-stack blogging application built with React.js for the frontend a
 - **CRUD Operations:** Create, read, update, and delete blog posts effortlessly within the application.
 - **Dynamic Routing:** Utilizing React Router DOM, seamless navigation between different sections of the application is ensured.
 - **Custom Slug Creation:** Leveraging React Hook Form's watch feature, custom slugs are generated dynamically by converting spaces between words into hyphens, enhancing SEO and user experience.
+- **State Management with Redux:** Implementing Redux with Redux Toolkit facilitates efficient management of application state, providing a centralized store for data handling and manipulation.
 
 ## Technologies Used:
 
